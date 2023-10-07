@@ -19,7 +19,7 @@
 
    - name: Unarchive a file that needs to be downloaded
      ansible.builtin.unarchive:
-      src: /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/frontend.zip 
+      src: https://expense-artifacts.s3.amazonaws.com/frontend.zip 
       dest: /usr/share/nginx/html/
       remote_src: yes
 
