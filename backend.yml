@@ -1,3 +1,4 @@
+set -x
 - name: backend setup
   hosts: all
   become: yes
@@ -27,7 +28,7 @@
    - name: create a directory
      ansible.builtin.file:
       path: /app
-      state : directory
+      state: directory
 
    - name: download and extract the code content
      ansible.builtin.unarchive:
