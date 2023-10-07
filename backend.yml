@@ -7,9 +7,9 @@
 
    - name: copy backend service
      ansible.builtin.copy:
-      name: copy backend service
+      name: backend service
       src: backend.service
-      dest: /etc/sysvinit/system/backend.service
+      dest: /etc/systemd/system/backend.service
 
    - name: Install nodejs
      ansible.builtin.dnf:
@@ -51,8 +51,8 @@
      ansible.builtin.shell: mysql -h mysql.sriharsha.shop -uroot -pSriharsha@1 < /app/schema/backend.sql
 
    - name: start backend service
-     ansible.builtin.sysvinit:
-       name: backend
+     ansible.builtin.systemd:
+       name: backend service
        state: restarted
        enabled: yes
       
