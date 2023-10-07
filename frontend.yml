@@ -2,24 +2,29 @@
   hosts: all
   become: yes
   tasks:
-   -name: Install nginx
-    ansible.builtin.dnf:
+   - name: Install nginx
+     ansible.builtin.dnf:
       name: nginx
       state: installed
-   -name: Remove directory and content from the file
-    ansible.builtin.file:
+
+   - name: Remove directory and content from the file
+     ansible.builtin.file:
       path: /usr/share/nginx/html/*
       state: absent
-   -name: Create directory
-    ansible.builtin.file:
+
+   - name: Create directory
+     ansible.builtin.file:
       path: /usr/share/nginx/html/
       state: directory
-   -name: Unarchive a file that needs to be downloaded
-    ansible.builtin.unarchive:
+
+   - name: Unarchive a file that needs to be downloaded
+     ansible.builtin.unarchive:
       src: /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/frontend.zip 
       dest: /usr/share/nginx/html/
       remote_src: yes
-   -name: restart nginx
-    ansible.builtin.systemd:
+
+   - name: restart nginx
+     ansible.builtin.systemd:
       name: restart nginx
       state: restart
+      enabled: yes
