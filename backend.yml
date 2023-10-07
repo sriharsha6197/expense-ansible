@@ -3,42 +3,42 @@
   become: yes
   tasks:
    - name: Install nodejs repo
-    ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+     ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
    - name: copy backend service
-    ansible.builtin.copy:
+     ansible.builtin.copy:
       name: copy backend service
       src: backend.service
       dest: /etc/systemd/system/backend.service
 
-   - ame: Install nodejs
-    ansible.builtin.dnf:
+   - name: Install nodejs
+     ansible.builtin.dnf:
       name: Install nodejs
       state: installed
     
    - name: Create user
-    ansible.builtin.user:
+     ansible.builtin.user:
       name: expense
       comment: expense
 
    - name: clean old content
-    ansible.builtin.file:
+     ansible.builtin.file:
       path: /app
       state: absent
 
    - name: create a directory
-    ansible.builtin.file:
+     ansible.builtin.file:
       path: /app
       state : directory
 
    - name: download and extract the code content
-    ansible.builtin.unarchive:
+     ansible.builtin.unarchive:
       src: https://expense-artifacts.s3.amazonaws.com/backend.zip
       dest: /app
       remote_src: yes
 
    - name: install nodejs dependencies
-    ansible.builtin.shell: npm install
+     ansible.builtin.shell: npm install
       args:
         chdir: /app
 
