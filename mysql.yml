@@ -2,15 +2,14 @@
   hosts: all
   become: yes
   tasks:
-   -name: disable mysql module
-    ansible.builtin.shell:
-      dnf module disable mysql -y
-
    -name: copy mysql repo
     ansible.builtin.copy:
       src: mysql.repo
       dest: /etc/yum.repos.d/mysql.repo
-    
+
+   -name: disable mysql module
+    ansible.builtin.shell:  dnf module disable mysql -y
+  
    -name: Install mysql
     ansible.builtin.dnf:
       name: mysql-community-server
