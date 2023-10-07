@@ -5,16 +5,15 @@
    - name: Install nodejs repo
      ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
-   - name: copy backend service
-     ansible.builtin.copy:
-      name: backend service
-      src: backend.service
-      dest: /etc/systemd/system/backend.service
-
    - name: Install nodejs
      ansible.builtin.dnf:
       name: Install nodejs
       state: present
+
+   - name: copy backend service
+     ansible.builtin.copy:
+      src: backend.service
+      dest: /etc/systemd/system/backend.service
     
    - name: Create user
      ansible.builtin.user:
@@ -43,9 +42,10 @@
 
    - name: start backend service
      ansible.builtin.systemd:
-      name: backend service
+      name: backend
       state: restarted
       enabled: yes
+      daemon-reload: yes
 
    - name: install mysql client
      ansible.builtin.dnf:
