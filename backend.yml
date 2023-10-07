@@ -9,7 +9,7 @@
      ansible.builtin.copy:
       name: copy backend service
       src: backend.service
-      dest: /etc/systemd/system/backend.service
+      dest: /etc/sysvinit/system/backend.service
 
    - name: Install nodejs
      ansible.builtin.dnf:
