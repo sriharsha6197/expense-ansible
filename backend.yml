@@ -38,7 +38,7 @@
     - name: install nodejs dependencies
       ansible.builtin.shell: npm install
         args:
-        chdir: /app
+         chdir: /app
 
     - name: start backend service
       ansible.builtin.systemd:
