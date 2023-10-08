@@ -39,16 +39,16 @@
       args:
         chdir: /app
 
-    - name: install mysql client
-      ansible.builtin.dnf:
-        name: mysql
-
-    - name: load schema
-      ansible.builtin.shell: mysql -h mysql.sriharsha.shop -uroot -pSriharsha@1 < /app/schema/backend.sql
-
     - name: start backend service
       ansible.builtin.systemd:
         name: backend
         state: restarted
         enabled: yes
         daemon-reload: yes
+
+    - name: install mysql client
+      ansible.builtin.dnf:
+        name: mysql
+
+    - name: load schema
+      ansible.builtin.shell: mysql -h mysql.sriharsha.shop -uroot -pSriharsha@1 < /app/schema/backend.sql
