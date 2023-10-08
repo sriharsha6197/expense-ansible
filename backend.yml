@@ -7,8 +7,7 @@
 
     - name: Install nodejs
       ansible.builtin.dnf:
-        name: Install nodejs
-        state: present
+        name: nodejs
 
     - name: copy backend service
       ansible.builtin.copy:
@@ -50,7 +49,6 @@
     - name: install mysql client
       ansible.builtin.dnf:
         name: mysql
-        state: present
 
     - name: load schema
       ansible.builtin.shell: mysql -h mysql.sriharsha.shop -uroot -pSriharsha@1 < /app/schema/backend.sql   
