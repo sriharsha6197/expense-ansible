@@ -47,7 +47,7 @@
         enabled: yes
         daemon-reload: yes
 
-   -  name: install mysql client
+    -  name: install mysql client
       ansible.builtin.dnf:
         name: mysql
         state: present
