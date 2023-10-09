@@ -4,7 +4,7 @@
   tasks:
     - name: Install nginx
       ansible.builtin.dnf:
-        name: nginx
+        name: Install nginx
         state: installed
 
     - name: remove directory and nginx content 
@@ -22,6 +22,11 @@
         src: https://expense-artifacts.s3.amazonaws.com/frontend.zip
         dest: /usr/share/nginx/html
         remote_src: yes
+
+    - name: copy expense reverse proxy.
+      ansible.builtin.copy:
+        src: expense.conf
+        dest: /etc/nginx/default.d/expense.conf
 
     - name: restart nginx
       ansible.builtin.systemd:
