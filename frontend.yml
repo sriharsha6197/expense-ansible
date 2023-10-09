@@ -4,7 +4,7 @@
   tasks:
     - name: Install nginx
       ansible.builtin.dnf:
-        name: Install nginx
+        name: nginx
         state: installed
 
     - name: remove directory and nginx content 
