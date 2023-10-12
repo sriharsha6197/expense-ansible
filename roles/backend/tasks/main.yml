@@ -23,6 +23,9 @@
          state: restarted
          daemon-reload: yes
 
+    - name: install dependencies
+      ansible.builtin.shell: npm install
+
     - name: install mysql
       ansible.builtin.dnf:
          name: mysql
