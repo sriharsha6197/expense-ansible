@@ -18,7 +18,7 @@
     - name: copy backend service
       ansible.builtin.copy:
          name: backend
-         dest: /etc/systemd/system/{{component}}.service
+         dest: /etc/systemd/system/backend.service
          enabled: yes
          state: restarted
          daemon-reload: yes
