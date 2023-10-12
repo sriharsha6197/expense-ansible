@@ -22,7 +22,7 @@
   
     - name: copy backend service
       ansible.builtin.copy:
-         name: backend
+         src: backend.service
          dest: /etc/systemd/system/backend.service
          enabled: yes
          state: restarted
