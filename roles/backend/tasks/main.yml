@@ -13,7 +13,7 @@
     - name: import a role
       ansible.builtin.import_role:
          name: common
-         tasks_from: app-prereq.yml
+         tasks_from: app-prereq
 
     - name: copy backend service
       ansible.builtin.copy:
