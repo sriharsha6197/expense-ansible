@@ -10,10 +10,10 @@
       ansible.builtin.user:
          name: expense
 
-    - name: import role
+    - name: import a role
       ansible.builtin.import_role:
-        name: common
-        tasks_from: app-prereq.yml
+         name: common
+         tasks_from: app-prereq.yml
 
     - name: copy backend service
       ansible.builtin.copy:
