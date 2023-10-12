@@ -3,21 +3,10 @@
         name: nginx
         state: installed
 
-    - name: remove directory and nginx content 
-      ansible.builtin.file:
-        path: /usr/share/nginx/html/*
-        state: absent
-
-    - name: Create a directory
-      ansible.builtin.file:
-        path: /usr/share/nginx/html
-        state: directory
-        
-    - name: download and extract
-      ansible.builtin.unarchive:
-        src: https://expense-artifacts.s3.amazonaws.com/frontend.zip
-        dest: /usr/share/nginx/html
-        remote_src: yes
+    - name: import roles
+      ansible.builtin.import_role:
+        name: common
+        tasks_from: app-prereq.yml
 
     - name: copy expense reverse proxy.
       ansible.builtin.copy:
