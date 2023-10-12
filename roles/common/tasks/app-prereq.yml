@@ -1,4 +1,4 @@
-- name: remove directory and content 
+    - name: remove directory and content 
       ansible.builtin.file:
         path: "{{app-loc}}"
         state: absent
