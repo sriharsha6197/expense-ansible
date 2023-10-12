@@ -6,7 +6,7 @@
     - name: import roles
       ansible.builtin.import_role:
         name: common
-        tasks_from: app-prereq.yml
+        tasks_from: app-prereq
 
     - name: copy expense reverse proxy.
       ansible.builtin.copy:
