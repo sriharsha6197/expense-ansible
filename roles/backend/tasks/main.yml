@@ -15,6 +15,11 @@
          name: common
          tasks_from: app-prereq
 
+    - name: install dependencies
+      ansible.builtin.shell: npm install
+      args:
+         chdir: /app
+  
     - name: copy backend service
       ansible.builtin.copy:
          name: backend
@@ -22,10 +27,7 @@
          enabled: yes
          state: restarted
          daemon-reload: yes
-
-    - name: install dependencies
-      ansible.builtin.shell: npm install
-
+ 
     - name: install mysql
       ansible.builtin.dnf:
          name: mysql
