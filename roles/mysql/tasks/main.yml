@@ -1,6 +1,5 @@
     - name: disable mysql
       ansible.builtin.shell: dnf module disable mysql -y
-        ignore-errors: yes
 
     - name: copy mysql repo
       ansible.builtin.copy:
