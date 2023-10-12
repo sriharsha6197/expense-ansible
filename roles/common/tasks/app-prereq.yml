@@ -1,15 +1,15 @@
     - name: remove directory and content 
       ansible.builtin.file:
-        path: "{{app-loc}}"
+        path: "{{ app-loc }}"
         state: absent
 
     - name: Create a directory
       ansible.builtin.file:
-        path: "{{app-loc}}"
+        path: "{{ app-loc }}"
         state: directory
         
     - name: download and extract
       ansible.builtin.unarchive:
-        src: https://expense-artifacts.s3.amazonaws.com/{{component}}.zip
+        src: https://expense-artifacts.s3.amazonaws.com/{{ component }}.zip
         dest: "{{app-loc}}"
         remote_src: yes
