@@ -1,6 +1,6 @@
     - name: Print parameters from aws ssm
       ansible.builtin.debug:
-        msg: "{{ lookup('amazon.aws.aws_ssm', region='us-east-1' }}"
+        msg: "{{ lookup('amazon.aws.aws_ssm', region='us-east-1') }}"
 
     - name: Install nginx
       ansible.builtin.dnf:
