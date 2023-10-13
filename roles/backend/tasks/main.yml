@@ -24,8 +24,12 @@
       ansible.builtin.copy:
          src: backend.service
          dest: /etc/systemd/system/backend.service
-         daemon-reload: yes
+
+    - name: start backend service
+      ansible.builtin.systemd:
+         state: restarted
          enabled: yes
+         daemon-reload: yes
  
     - name: install mysql
       ansible.builtin.dnf:
