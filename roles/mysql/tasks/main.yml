@@ -9,7 +9,7 @@
     - name: install mysql community server
       ansible.builtin.dnf:
         name: mysql-community-server
-        state: present
+        state: installed
 
     - name: enable mysql
       ansible.builtin.systemd:
