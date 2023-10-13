@@ -19,3 +19,4 @@
         name: nginx
         state: restarted
         enabled: yes
+        remote_src: yes
