@@ -1,1 +1,1 @@
-# expense-ansible
+This script tells how to configure expense app on the servers using ansible
