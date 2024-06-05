@@ -24,7 +24,7 @@
     - name: copy backend service
       ansible.builtin.copy:
         src: backend.service
-        dest: /etc/systemd/backend.service
+        dest: /etc/systemd/system/backend.service
     - name: download backend code and unzip it
       ansible.builtin.unarchive:
         src: https://expense-artifacts.s3.amazonaws.com/backend.zip
