@@ -44,11 +44,13 @@
       ansible.builtin.dnf:
         name: mysql
         state: present
-    - name: connecting to the database
-      community.mysql.mysql_db:
-        state: present
-        name: all
-        target: /app/schema/backend.sql
-        login_user: root
-        login_password: Sriharsha@1
-        login_host: mysql.sriharsha.shop
+    # - name: connecting to the database
+    #   community.mysql.mysql_db:
+    #     state: present
+    #     name: all
+    #     target: /app/schema/backend.sql
+    #     login_user: root
+    #     login_password: Sriharsha@1
+    #     login_host: mysql.sriharsha.shop
+    - name: connecting to the datab
+      ansible.builtin.shell: mysql -h mysql.sriharsha.shop -uroot -pSriharsha@1 < /app/schema/backend.sql 
