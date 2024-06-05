@@ -47,4 +47,10 @@
           - python3-PyMySQL
         state: present
     - name: connecting to the datab
-      ansible.builtin.shell: mysql -h mysql.sriharsha.shop -uroot -pSriharsha@1 < /app/schema/backend.sql 
+      community.mysql.mysql_db:
+        state: import
+        name: all
+        target: /app/schema/backend.sql
+        login_user: root
+        login_password: Sriharsha@1
+        login_host: mysql.sriharsha.shop 
