@@ -6,8 +6,6 @@ User=sri
 Environment=DB_HOST="mysql.sriharsha.shop"
 ExecStart=/bin/node /app/index.js
 SyslogIdentifier=backend
-Type=notify
-Restart=always
 
 [Install]
 WantedBy=multi-user.target
