@@ -4,7 +4,7 @@
   tasks:
     - name: install mysql community server
       ansible.builtin.dnf:
-        name: mysql-community-server
+        name: mysql-server
         state: present
     - name: enable mysql service
       ansible.builtin.systemd:
