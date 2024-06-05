@@ -48,8 +48,8 @@
         state: present
     - name: connecting to the datab
       community.mysql.mysql_db:
-        state: import
         name: all
+        state: import
         target: /app/schema/backend.sql
         login_user: root
         login_password: Sriharsha@1
