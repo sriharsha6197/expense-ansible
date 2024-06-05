@@ -46,11 +46,11 @@
           - mysql
           - python3-PyMySQL
         state: present
-    - name: connecting to the datab
+    - name: load schema
       community.mysql.mysql_db:
         name: all
         state: import
         target: /app/schema/backend.sql
         login_user: root
         login_password: Sriharsha@1
-        login_host: mysql.sriharsha.shop 
+        login_host: mysql.sriharsha.shop
