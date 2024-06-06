@@ -37,15 +37,13 @@
     - name: enable and restart backend service
       ansible.builtin.systemd_service:
         name: backend
-        enabled: true
+        enabled: yes
         state: restarted
-        daemon-reload: true
+        daemon-reload: yes
     - name: install mysql setup
       ansible.builtin.dnf:
-        name: 
-          - mysql
-          - python3-PyMySQL
+        name: mysql
         state: present
     - name: load schema
-      ansible.builtin.shell: mysql -h mysql.sriharsha.shop -uroot -pExpenseApp@1 < /app/schema/backend.sql
+      ansible.builtin.shell: mysql -h mysql.sriharsha.shop -uroot -pSriharsha@1 < /app/schema/backend.sql
         

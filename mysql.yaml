@@ -2,15 +2,21 @@
   hosts: all
   become: yes
   tasks:
+    - name: disable mysql module
+      ansible.builtin.dnf: dnf module disable mysql -y
+    - name: copy mysql repo
+      ansible.builtin.copy:
+        src: mysql.r
+        dest: /etc/yum.repos.d/mysql.repo
     - name: install mysql community server
       ansible.builtin.dnf:
-        name: mysql-server
+        name: mysql-community-server
         state: present
     - name: enable mysql service
-      ansible.builtin.systemd_service:
+      ansible.builtin.systemd:
          name: mysqld
-         enabled: true
+         enabled: yes
          state: restarted
     - name: enable connection and set root password
-      ansible.builtin.shell: mysql_secure_installation --set-root-pass ExpenseApp@1
+      ansible.builtin.shell: mysql_secure_installation --set-root-pass Sriharsha@1
       ignore_errors: yes
