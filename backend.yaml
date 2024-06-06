@@ -47,10 +47,5 @@
           - python3-PyMySQL
         state: present
     - name: load schema
-      community.mysql.mysql_db:
-        name: all
-        state: import
-        target: /app/schema/backend.sql
-        login_user: root
-        login_password: Sriharsha@1
-        login_host: mysql.sriharsha.shop
+      ansible.builtin.shell: mysql -h mysql.sriharsha.shop -uroot -pSriharsha@1 < /app/schema/backend.sql
+        
