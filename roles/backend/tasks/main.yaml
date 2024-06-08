@@ -1,11 +1,14 @@
     - name: check nodejs installed or not
       ansible.builtin.shell: type npm
       ignore_errors: true
-      
+    - name: print nodejs status
+      ansible.builtin.debug:
+        msg: rc
     - name: disable nodejs present version
       ansible.builtin.shell: dnf module disable nodejs -y
     - name: enable nodejs current version 
       ansible.builtin.shell: dnf module enable nodejs:20 -y
+  
     - name: install nodejs
       ansible.builtin.dnf:
         name: nodejs
