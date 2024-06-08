@@ -4,7 +4,7 @@
       register: npm
     - name: print nodejs status
       ansible.builtin.debug:
-        msg: "npm"
+        msg: npm
     - name: disable nodejs present version
       ansible.builtin.shell: dnf module disable nodejs -y
     - name: enable nodejs current version 
