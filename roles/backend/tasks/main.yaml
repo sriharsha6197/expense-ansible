@@ -1,7 +1,6 @@
-- name: Backend setup
-  hosts: all
-  become: yes
-  tasks:
+    - name: check nodejs installed or not
+      ansible.builtin.dnf: type npm
+
     - name: disable nodejs present version
       ansible.builtin.shell: dnf module disable nodejs -y
     - name: enable nodejs current version 
@@ -10,14 +9,7 @@
       ansible.builtin.dnf:
         name: nodejs
         state: present
-    - name: remove directory
-      ansible.builtin.file:
-        path: /app
-        state: absent
-    - name: create directory
-      ansible.builtin.file:
-        path: /app
-        state: directory
+      when: rc != 0
     - name: add app user
       ansible.builtin.user:
         name: sri
@@ -25,11 +17,12 @@
       ansible.builtin.copy:
         src: backend.service
         dest: /etc/systemd/system/backend.service
-    - name: download backend code and unzip it
-      ansible.builtin.unarchive:
-        src: https://expense-artifacts.s3.amazonaws.com/backend.zip
-        dest: /app
-        remote_src: yes
+
+    - name: import role from common directory
+      ansible.builtin.import_role:
+        name: common
+        tasks_from: app_prereq
+
     - name: download dependencies
       ansible.builtin.shell: npm install
       args: 
@@ -46,4 +39,3 @@
         state: present
     - name: load schema
       ansible.builtin.shell: mysql -h mysql.sriharsha.shop -uroot -pSriharsha@1 < /app/schema/backend.sql
-        
