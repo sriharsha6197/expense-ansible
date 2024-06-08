@@ -1,0 +1,13 @@
+    - name: remove old html content and directory
+      ansible.builtin.file:
+        path: /usr/share/nginx/html
+        state: absent
+    - name: create a directory
+      ansible.builtin.file:
+        path: /usr/share/nginx/html
+        state: directory 
+    - name: download frontend code
+      ansible.builtin.unarchive:
+        src: https://expense-artifacts.s3.amazonaws.com/$component.zip
+        dest: /usr/share/nginx/html
+        remote_src: yes
