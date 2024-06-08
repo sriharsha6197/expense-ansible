@@ -8,6 +8,6 @@
         state: directory 
     - name: download frontend code
       ansible.builtin.unarchive:
-        src: https://expense-artifacts.s3.amazonaws.com/"{{ component }}".zip
+        src: https://expense-artifacts.s3.amazonaws.com/{{ component }}.zip
         dest: "{{ path_to_frontend }}"
         remote_src: yes
