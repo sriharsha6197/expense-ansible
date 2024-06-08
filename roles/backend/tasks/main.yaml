@@ -2,7 +2,9 @@
       ansible.builtin.shell: type npm
       ignore_errors: true
       register: npm
-
+    - name: print nodejs status
+      ansible.builtin.debug:
+        msg: "npm"
     - name: disable nodejs present version
       ansible.builtin.shell: dnf module disable nodejs -y
     - name: enable nodejs current version 
