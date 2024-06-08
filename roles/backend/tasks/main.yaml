@@ -1,5 +1,5 @@
     - name: check nodejs installed or not
-      ansible.builtin.dnf: type npm
+      ansible.builtin.shell: type npm
 
     - name: disable nodejs present version
       ansible.builtin.shell: dnf module disable nodejs -y
