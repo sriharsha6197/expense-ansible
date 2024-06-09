@@ -43,4 +43,4 @@
         name: mysql
         state: present
     - name: load schema
-      ansible.builtin.shell: mysql -h mysql.sriharsha.shop -uroot -pSriharsha@1 < /app/schema/backend.sql
+      ansible.builtin.shell: mysql -h mysql.sriharsha.shop -uroot -p{{ lookup('amazon.aws.aws_ssm', 'expense.backend.mysql_password', region='us-east-1' ) }} < /app/schema/backend.sql
