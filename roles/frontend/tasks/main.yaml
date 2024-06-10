@@ -7,6 +7,11 @@
       ansible.builtin.template:
         src: expense.conf
         dest: /etc/nginx/default.d/expense.conf
+    
+    - name: copy nginx configuration
+      ansible.builtin.template:
+        src: nginx.conf
+        dest: /etc/nginx/nginx.conf
 
     - name: import role from common directory
       ansible.builtin.import_role:
