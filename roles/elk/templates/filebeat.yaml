@@ -61,7 +61,7 @@ filebeat.config.modules:
   path: ${path.config}/modules.d/*.yml
 
   # Set to true to enable config reloading
-  reload.enabled: true
+  reload.enabled: false
 
   # Period on which files under path should be checked for changes
   #reload.period: 10s
@@ -142,7 +142,7 @@ setup.kibana:
 
   # Performance preset - one of "balanced", "throughput", "scale",
   # "latency", or "custom".
-  # preset: balanced
+  #preset: balanced
 
   # Protocol - either `http` (default) or `https`.
   #protocol: "https"
@@ -172,28 +172,12 @@ processors:
   - drop_fields:
       fields:
         - agent.ephemeral_id
-        - agent.id
         - agent.name
-        - agent.type
-        - cloud.account.id
-        - cloud.availability_zone
-        - cloud.provider
-        - cloud.region
-        - cloud.service.name
-        - host.hostname
-        - host.id
-        - host.mac
-        - host.name
-        - host.os.family
-        - host.os.kernel
-        - input.type
-        - og.file.inode
-        - log.offset
-         #- add_host_metadata:
-         # when.not.contains.tags: forwarded
-         # - add_cloud_metadata: ~
-         # - add_docker_metadata: ~
-         # - add_kubernetes_metadata: ~
+  # - add_host_metadata:
+  #     when.not.contains.tags: forwarded
+  # - add_cloud_metadata: ~
+  # - add_docker_metadata: ~
+  # - add_kubernetes_metadata: ~
 
 # ================================== Logging ===================================
 
