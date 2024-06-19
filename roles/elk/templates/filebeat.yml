@@ -173,6 +173,9 @@ processors:
       fields:
          - agent.ephemeral_id
          - agent.name
+         - agent.id
+         - agent.type
+         - log.file.device_id
       ignore_missing: false
   # - add_host_metadata:
   #     when.not.contains.tags: forwarded
