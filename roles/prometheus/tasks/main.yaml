@@ -1,0 +1,16 @@
+- name: install prometheus
+  ansible.builtin.unarchive:
+    src: wget https://github.com/prometheus/prometheus/releases/download/v2.53.0/prometheus-2.53.0.linux-amd64.tar.gz
+    dest: /opt
+    remote_src: yes
+
+# - name: copy prometheus config file
+#   ansible.builtin.template:
+#     src: prometheus.yml
+#     dest: /opt/prometheus/prometheus.yml
+
+- name: start prometheus
+  ansible.builtin.systemd:
+    name: prometheus
+    enabled: yes
+    state: restarted
