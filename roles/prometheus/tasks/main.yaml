@@ -9,13 +9,7 @@
     dest: /opt
     remote_src: yes
 
-# - name: copy prometheus config file
-#   ansible.builtin.template:
-#     src: prometheus.yml
-#     dest: /opt/prometheus/prometheus.yml
-
-- name: start prometheus
-  ansible.builtin.systemd:
-    name: prometheus
-    enabled: yes
-    state: restarted
+- name: copy prometheus config file
+  ansible.builtin.template:
+    src: prometheus.yml
+    dest: /opt/prometheus/prometheus.yml
