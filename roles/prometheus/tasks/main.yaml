@@ -18,3 +18,15 @@
   ansible.builtin.template:
     src: prometheus.yml
     dest: /opt/prometheus/prometheus.yml
+
+- name: copy prometheus service
+  ansible.builtin.copy:
+    src: prometheus.service
+    dest: /etc/systemd/system/prometheus.service
+
+- name: start prometheus service
+  ansible.builtin.systemd:
+    name: prometheus
+    enabled: yes
+    state: restarted
+    daemon-reload: yes

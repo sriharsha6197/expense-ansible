@@ -1,0 +1,11 @@
+[Unit]
+Description=prometheus Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+WorkingDirectory=/opt/prometheus
+ExecStart=/opt/prometheus/prometheus.yml
+
+[Install]
+WantedBy=multi-user.target
