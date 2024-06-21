@@ -20,7 +20,7 @@
     dest: /opt/prometheus/prometheus.yml
 
 - name: copy prometheus service
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: prometheus.service
     dest: /etc/systemd/system/prometheus.service
 
