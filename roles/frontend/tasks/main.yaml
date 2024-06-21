@@ -24,10 +24,10 @@
         enabled: yes
         state: restarted
 
-    - name: import filebeat repo
-      ansible.builtin.import_role:
-        name: elk
-        tasks_from: filebeat
+    # - name: import filebeat repo
+    #   ansible.builtin.import_role:
+    #     name: elk
+    #     tasks_from: filebeat
 
     - name: import node exporter repo
       ansible.builtin.import_role:
