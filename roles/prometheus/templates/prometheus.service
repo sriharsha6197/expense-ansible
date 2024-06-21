@@ -4,6 +4,7 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
+Type=simple
 WorkingDirectory=/opt/prometheus/prometheus-2.53.0.linux-amd64
 ExecStart=/opt/prometheus/prometheus-2.53.0.linux-amd64/prometheus.yml
 
