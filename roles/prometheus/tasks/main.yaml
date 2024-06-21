@@ -3,10 +3,15 @@
     name: wget
     state: installed
 
+- name: create a directory
+  ansible.builtin.file:
+    path: /opt/prometheus
+    state: directory
+
 - name: install prometheus
   ansible.builtin.unarchive:
     src: https://github.com/prometheus/prometheus/releases/download/v2.53.0/prometheus-2.53.0.linux-amd64.tar.gz
-    dest: /opt/prometeus
+    dest: /opt/prometheus
     remote_src: yes
 
 - name: copy prometheus config file
