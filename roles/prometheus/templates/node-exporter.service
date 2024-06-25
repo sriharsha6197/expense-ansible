@@ -5,8 +5,8 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/opt/node-exporter
-WorkingDirectory=/opt/node-exporter
+ExecStart=/opt/node-exporter/node_exporter-1.8.1.linux-amd64/node_exporter
+WorkingDirectory=/opt/node-exporter/node_exporter-1.8.1.linux-amd64
 SyslogIdentifier=node-exporter
 
 [Install]
