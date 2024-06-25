@@ -1,6 +1,6 @@
 - name: create a directory
   ansible.builtin.file:
-    src: /opt/node-exporter
+    path: /opt/node-exporter
     state: directory
 
 - name: install node exporter
