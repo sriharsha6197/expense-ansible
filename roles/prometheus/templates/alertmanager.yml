@@ -14,3 +14,8 @@ receivers:
         auth_username: {{ lookup('amazon.aws.aws_ssm', 'expense.prometheus.username', region='us-east-1') }}
         auth_password: {{ lookup('amazon.aws.aws_ssm', 'expense.prometheus.password', region='us-east-1') }}
         require_tls: true
+
+inhibit_rules:
+  - source_match:
+      severity: 'critical'
+    equal: ['alertname', 'dev', 'instance']
