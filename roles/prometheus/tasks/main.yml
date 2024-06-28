@@ -19,6 +19,16 @@
     src: prometheus.service
     dest: /etc/systemd/system/prometheus.service
 
+- name: copy records yml file to prometheus
+  ansible.builtin.template:
+    src: records.yml
+    dest: /opt/prometheus-2.53.0.linux-amd64/records.yml
+
+- name: copy alerts yml file into prometheus
+  ansible.builtin.template:
+    src: alerts.yml
+    dest: /opt/prometheus-2.53.0.linux-amd64/alerts.yml
+
 - name: restart prometheus service 
   ansible.builtin.systemd:
     name: prometheus
@@ -26,7 +36,3 @@
     state: restarted
     daemon-reload: yes
 
-- name: copy records yml file to prometheus
-  ansible.builtin.template:
-    src: records.yml
-    dest: /opt/prometheus-2.53.0.linux-amd64/records.yml

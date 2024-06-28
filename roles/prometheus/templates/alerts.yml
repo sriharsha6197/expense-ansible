@@ -1,0 +1,11 @@
+groups:
+- name: expense
+  rules:
+  - alert: server down alert
+    expr: up == 0
+    for: 10m
+    labels:
+      severity: critical
+    annotations:
+      summary: server down alert
+      description: server is down. Please start 
