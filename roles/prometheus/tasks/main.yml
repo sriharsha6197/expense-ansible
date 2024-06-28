@@ -25,3 +25,8 @@
     enabled: yes
     state: restarted
     daemon-reload: yes
+
+- name: copy records yml file to prometheus
+  ansible.builtin.template:
+    src: records.yml
+    dest: /opt/records.yml
