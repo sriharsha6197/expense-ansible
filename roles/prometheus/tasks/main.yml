@@ -40,17 +40,22 @@
     dest: /opt/alertmanager
     remote_src: yes
 
-# - name: copy alert manager service
-#   ansible.builtin.template:
-#     src: alert-manager.service
-#     dest: /etc/systemd/system/alert-manager.service
+- name: copy alert manager service
+  ansible.builtin.template:
+    src: alert-manager.service
+    dest: /etc/systemd/system/alert-manager.service
 
-# - name: restart alert manager
-#   ansible.builtin.systemd:
-#     name: alert-manager
-#     enabled: yes
-#     state: restarted
-#     daemon-reload: yes
+- name: copy alert manger yml file
+  ansible.builtin.template:
+    src: alertmanager.yml
+    dest: /opt/alertmanager/alertmanager-0.27.0.linux-amd64/alertmanager.yml
+
+- name: restart alert manager
+  ansible.builtin.systemd:
+    name: alert-manager
+    enabled: yes
+    state: restarted
+    daemon-reload: yes
 
 - name: restart prometheus service 
   ansible.builtin.systemd:
