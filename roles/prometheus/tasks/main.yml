@@ -29,6 +29,29 @@
     src: alerts.yml
     dest: /opt/prometheus-2.53.0.linux-amd64/alerts.yml
 
+- name: create a directory
+  ansible.builtin.file:
+    path: /opt/alertmanager
+    state: directory
+
+- name: install alert manager
+  ansible.builtin.unarchive:
+    src: https://github.com/prometheus/alertmanager/releases/download/v0.27.0/alertmanager-0.27.0.linux-amd64.tar.gz
+    dest: /opt/alertmanager
+    remote_src: yes
+
+# - name: copy alert manager service
+#   ansible.builtin.template:
+#     src: alert-manager.service
+#     dest: /etc/systemd/system/alert-manager.service
+
+# - name: restart alert manager
+#   ansible.builtin.systemd:
+#     name: alert-manager
+#     enabled: yes
+#     state: restarted
+#     daemon-reload: yes
+
 - name: restart prometheus service 
   ansible.builtin.systemd:
     name: prometheus
