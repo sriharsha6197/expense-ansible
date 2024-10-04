@@ -43,7 +43,7 @@
         name: mysql
         state: present
     - name: load schema
-      ansible.builtin.shell: mysql -h {{ lookup('aws_ssm', 'expense.backend.mysql_url', region='us-east-1' ) }} -uroot -p{{ lookup('aws_ssm', 'expense.backend.mysql_password', region='us-east-1' ) }} < /app/schema/backend.sql
+      ansible.builtin.shell: mysql -h {{ lookup('aws_ssm', 'dev.rds.master_username', region='us-east-1' ) }} -uroot -p{{ lookup('aws_ssm', 'dev.rds.master_password', region='us-east-1' ) }} < /app/schema/backend.sql
 
     - name: import node-exporter role
       ansible.builtin.import_role:
