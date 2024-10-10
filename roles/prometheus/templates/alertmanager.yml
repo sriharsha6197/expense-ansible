@@ -8,8 +8,8 @@ route:
 receivers:
   - name: "email"
     email_configs:
-      - to: raghuk.vit@gmail.com
-        from: raghuk.vit@gmail.com
+      - to: mshdevops2024@gmail.com
+        from: mshdevops2024@gmail.com
         smarthost: "email-smtp.us-east-1.amazonaws.com:587"
         auth_username: {{ lookup('amazon.aws.aws_ssm', 'expense.prometheus.username', region='us-east-1') }}
         auth_password: {{ lookup('amazon.aws.aws_ssm', 'expense.prometheus.password', region='us-east-1') }}
